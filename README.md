@@ -8,6 +8,7 @@ Create new folder and clone the repo.
 This app retrieves data from the openweathermap.org 
 To use it you need to sign in to https://api.openweathermap.org and obtain your uniqe api_key.
 Once you have the key create a .env file:
+
 ```% touch .env```
 open it, add your key:
 
