@@ -10,6 +10,7 @@ To use it you need to sign in to https://api.openweathermap.org and obtain your 
 Once you have the key create a .env file:
 
 ```% touch .env```
+
 open it, add your key:
 
 API_KEY=<your_api_key>
