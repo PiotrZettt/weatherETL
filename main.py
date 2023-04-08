@@ -38,14 +38,17 @@ def main(locations_list):
                 response.raise_for_status()
             except requests.exceptions.RequestException as error:
                 logger.error(error)
+                print(error)
             else:
                 logger.info(response.status_code)
+                print(response.status_code)
 
             weather_data = response.json()
             data.append(weather_data)
 
     # Transform data
     formatted_data = []
+    json_formatted_data = []
     for d in data:
         place = d["name"]
         temp = d["main"]["temp"]
@@ -58,10 +61,15 @@ def main(locations_list):
                                ["wind", str(wind_speed)],
                                ["description", description]
                                ])
+        json_formatted_data.append({"name": place, "temp": str(temp),
+                                    "humidity": str(humidity) + '%',
+                                    "wind":str(wind_speed),
+                                    "description": description
+                                    })
 
     # Write data to file
     with open("weather.json", "w") as f:
-        json.dump(formatted_data, f)
+        json.dump(json_formatted_data, f)
 
     df = pd.DataFrame(formatted_data)
     df.to_parquet("weather.parquet")

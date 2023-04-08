@@ -1,1 +1,1 @@
-[[["name", "London"], ["temp", "11.53"], ["humidity", "54%"], ["wind", "2.57"], ["description", "clear sky"]], [["name", "Berlin"], ["temp", "5.3"], ["humidity", "92%"], ["wind", "3.13"], ["description", "light rain"]]]
+[{"name": "London", "temp": "9.8", "humidity": "83%", "wind": "0.51", "description": "clear sky"}, {"name": "Berlin", "temp": "7.55", "humidity": "89%", "wind": "3.6", "description": "overcast clouds"}]
