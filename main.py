@@ -13,7 +13,7 @@ def main(locations_list):
 
     # Extract data from OpenWeatherMap API
     # set the API key
-    try:
+    api_key = os.environ.get('API_KEY', None)
         api_key = os.environ['API_KEY']
         if not api_key:
             raise ValueError('API_KEY environment variable is empty')
