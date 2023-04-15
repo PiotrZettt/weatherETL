@@ -28,6 +28,9 @@ def main():
     # Extract data from OpenWeatherMap API
     # set the API key
     api_key = os.environ.get('API_KEY', None)
+    if not api_key:
+        logger.error("No API_KEY environment variable found, can't download data")
+        sys.exit(1)
 
     url = "https://api.openweathermap.org/data/2.5/weather"
     data = []
