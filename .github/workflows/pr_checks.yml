@@ -77,10 +77,11 @@ jobs:
         if: ${{ always() }}
         id: coverageComment
         uses: MishaKav/pytest-coverage-comment@main
-        badge-title: Code coverage
-        title: Coverage report
-        junitxml-path: pytest.xml
-        hide-badge: false
-        hide-report: false
-        create-new-comment: false
-        report-only-changed-files: false
+        with:
+          badge-title: Code coverage
+          title: Coverage report
+          junitxml-path: pytest.xml
+          hide-badge: false
+          hide-report: false
+          create-new-comment: false
+          report-only-changed-files: false
