@@ -65,7 +65,7 @@ def main():
     ]
 
     # Write data to file
-    with open("weather.json", "w") as f:
+    with open("weather.json", "a") as f:
         for record in json_formatted_data:
             print(json.dumps(record), file=f)
 
