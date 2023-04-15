@@ -36,7 +36,6 @@ def main():
             response.raise_for_status()
         except requests.exceptions.RequestException as error:
             logger.error(error)
-            print(error)
         else:
             logger.info(response.status_code)
             print(response.status_code)
