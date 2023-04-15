@@ -6,10 +6,17 @@ import logging
 import pandas as pd
 
 
-def main(locations_list):
+def main():
 
     # Create Logger
     logger = logging.getLogger(__name__)
+    
+    # Add Parser
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--locations_list', nargs='+', help='A list of places to check the weather for')
+    args = parser.parse_args()
+    places = args.locations_list
 
     # Extract data from OpenWeatherMap API
     # set the API key
@@ -23,28 +30,23 @@ def main(locations_list):
     url = "https://api.openweathermap.org/data/2.5/weather"
     data = []
 
-    # read data from 'locations_list.json' file
-    with open(locations_list, 'r') as f:
-        file_content = f.read()
-        places = json.loads(file_content)
-
     # iterate through the locations list
-        for place in places:
-            querystring = {"q": place["name"], "units": "metric", "appid": api_key}
+    for place in places:
+        querystring = {"q": place, "units": "metric", "appid": api_key}
 
-            # send a get request
-            try:
-                response = requests.request("GET", url, params=querystring)
-                response.raise_for_status()
-            except requests.exceptions.RequestException as error:
-                logger.error(error)
-                print(error)
-            else:
-                logger.info(response.status_code)
-                print(response.status_code)
+        # send a get request
+        try:
+            response = requests.request("GET", url, params=querystring)
+            response.raise_for_status()
+        except requests.exceptions.RequestException as error:
+            logger.error(error)
+            print(error)
+        else:
+            logger.info(response.status_code)
+            print(response.status_code)
 
-            weather_data = response.json()
-            data.append(weather_data)
+        weather_data = response.json()
+        data.append(weather_data)
 
     # Transform data
     formatted_data = []
@@ -76,8 +78,4 @@ def main(locations_list):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('locations_list')
-    args = parser.parse_args()
-    main(args.locations_list)
-
+    main()
