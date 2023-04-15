@@ -38,7 +38,7 @@ jobs:
 
       - name: Publish pre-commit report in PR
         if: ${{ always() }}
-        uses: marocchino/stiky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path: ${{ env.PRE_COMMIT_FILE }}
