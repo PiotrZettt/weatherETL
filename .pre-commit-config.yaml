@@ -19,10 +19,7 @@ repos:
         types: [file, python]
         files: .
         entry: isort
-        args:
-          - "--profile=black"
-          - "--line-length=120"
-          - "--balanced"
+        args: ['--profile', 'black', '--line-length', '120', '--balanced']
 
   - repo: local
     hooks:
