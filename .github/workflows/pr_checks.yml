@@ -1,0 +1,86 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  PYTHON_VERSION: 3.10.6
+  PRE_COMMIT_FILE: "pre-commit-report.txt"
+  PYTEST_COV_FILE: "coverage-report.txt"
+
+jobs:
+  code-analysis:
+    name: Code formatting checks
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.github.ref }}
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Run pre-commit report
+        run: |
+          export PYTHONPATH="${PYTHONPATH}:$GITHUB_WORKSPACE/src"
+          pre-commit run --all-files > ${{ env.PRE_COMMIT_FILE }}
+
+      - name: Publish pre-commit report in PR
+        if: ${{ always() }}
+        uses: marocchino/stiky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ env.PRE_COMMIT_FILE }}
+
+  pytest:
+    name: Pytest code coverage
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.github.ref }}
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Run unit tests
+        id: pytest-coverage-report
+        run: |
+          pytest --disable-pytest-warnings --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=src > ${{ env.PYTEST_COV_FILE }}
+
+      - name: Print pytest diagnostic
+        if: ${{ always() }}
+        run: |
+          cat ${{ env.PYTEST_COV_FILE }}
+
+      - name: Pytest coverage comment
+        if: ${{ always() }}
+        id: coverageComment
+        uses: MishaKav/pytest-coverage-comment@main
+        badge-title: Code coverage
+        title: Coverage report
+        junitxml-path: pytest.xml
+        hide-badge: false
+        hide-report: false
+        create-new-comment: false
+        report-only-changed-files: false
