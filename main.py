@@ -10,6 +10,12 @@ from datetime import datetime
 def main():
     # Create Logger
     logger = logging.getLogger(__name__)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s,%(msecs)03d %(name)-20s %(levelname)-7s %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%s",
+        stream=sys.stdout,
+    )
 
     # Add Parser
 
