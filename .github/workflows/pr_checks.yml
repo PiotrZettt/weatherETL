@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  pull-requests: write
+
 env:
   PYTHON_VERSION: 3.10.6
   PRE_COMMIT_FILE: "pre-commit-report.txt"
@@ -26,21 +29,19 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Setup dependencies
+      - name: Install dev dependencies
         run: |
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
+          pip install --upgrade pip
+          pip install pre-commit
 
       - name: Run pre-commit report
         run: |
-          export PYTHONPATH="${PYTHONPATH}:$GITHUB_WORKSPACE/src"
-          pre-commit run --all-files > ${{ env.PRE_COMMIT_FILE }}
+          pre-commit run --all-files > pre-commit-report.txt
 
       - name: Publish pre-commit report in PR
         if: ${{ always() }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path: ${{ env.PRE_COMMIT_FILE }}
 
   pytest:
