@@ -1,11 +1,12 @@
-import requests
-import os
-import sys
 import argparse
 import json
 import logging
-import pandas as pd
+import os
+import sys
 from datetime import datetime
+
+import pandas as pd
+import requests
 
 
 def main():
@@ -21,13 +22,13 @@ def main():
     # Add Parser
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--locations_list', nargs='+', help='A list of places to check the weather for', required=True)
+    parser.add_argument("--locations_list", nargs="+", help="A list of places to check the weather for", required=True)
     args = parser.parse_args()
     places = args.locations_list
 
     # Extract data from OpenWeatherMap API
     # set the API key
-    api_key = os.environ.get('API_KEY', None)
+    api_key = os.environ.get("API_KEY", None)
     if not api_key:
         logger.error("No API_KEY environment variable found, can't download data")
         sys.exit(1)
@@ -48,7 +49,6 @@ def main():
             logger.error(error)
         else:
             logger.info(response.status_code)
-            print(response.status_code)
 
         weather_data = response.json()
         data.append(weather_data)
@@ -61,8 +61,9 @@ def main():
             "temp": record["main"]["temp"],
             "humidity": record["main"]["humidity"],
             "wind": record["wind"]["speed"],
+            "visibilty": record["visibility"],
             "description": record["weather"][0]["description"],
-            "extraction_timestamp": timestamp
+            "extraction_timestamp": timestamp,
         }
         for record in data
     ]
@@ -76,5 +77,5 @@ def main():
     df.to_parquet("weather.parquet")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
