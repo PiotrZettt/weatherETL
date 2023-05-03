@@ -1,32 +1,28 @@
-# Set base image
-FROM python:3.10
+# set base image (host OS)
+FROM python:3.9
 
-# Set working directory
+# set the working directory in the container
 WORKDIR /app
 
-# Copy source code to working directory
+# copy the dependencies file to the working directory
+COPY requirements.txt .
+
+# create a virtual environment
+RUN python -m venv /opt/venv
+
+# activate the virtual environment
+ENV PATH="/opt/venv/bin:$PATH"
+
+# upgrade pip and install packages
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+# set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# copy the content of the local src directory to the working directory
 COPY src/main.py /app
 
-# Install system dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        build-essential \
-        libpq-dev \
-        && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install Python dependencies
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt && \
-    pip install -r requirements-dev.txt && \
-
-# Set environment variables
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PATH="/app:${PATH}"
-
-# Expose port for app
-EXPOSE 8000
-
-# Run command to start app
-CMD ["python", "app.py"]
+# command to run on container start
+CMD [ "python", "./main.py" ]
