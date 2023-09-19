@@ -1,0 +1,25 @@
+[2023-09-19T07:58:38.936+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_data.extract_data manual__2023-09-19T07:58:38.095147+00:00 [queued]>
+[2023-09-19T07:58:38.940+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_data.extract_data manual__2023-09-19T07:58:38.095147+00:00 [queued]>
+[2023-09-19T07:58:38.940+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-19T07:58:38.946+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonOperator): extract_data> on 2023-09-19 07:58:38.095147+00:00
+[2023-09-19T07:58:38.950+0000] {standard_task_runner.py:57} INFO - Started process 5375 to run task
+[2023-09-19T07:58:38.953+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'weather_data', 'extract_data', 'manual__2023-09-19T07:58:38.095147+00:00', '--job-id', '63', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpo4n_1x41']
+[2023-09-19T07:58:38.954+0000] {standard_task_runner.py:85} INFO - Job 63: Subtask extract_data
+[2023-09-19T07:58:38.981+0000] {task_command.py:415} INFO - Running <TaskInstance: weather_data.extract_data manual__2023-09-19T07:58:38.095147+00:00 [running]> on host 973481dcacb6
+[2023-09-19T07:58:39.023+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_data' AIRFLOW_CTX_TASK_ID='extract_data' AIRFLOW_CTX_EXECUTION_DATE='2023-09-19T07:58:38.095147+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-19T07:58:38.095147+00:00'
+[2023-09-19T07:58:39.343+0000] {logging_mixin.py:151} INFO - [{'coord': {'lon': -0.1257, 'lat': 51.5085}, 'weather': [{'id': 500, 'main': 'Rain', 'description': 'light rain', 'icon': '10d'}], 'base': 'stations', 'main': {'temp': 16.13, 'feels_like': 16.02, 'temp_min': 15.25, 'temp_max': 16.75, 'pressure': 1005, 'humidity': 85}, 'visibility': 10000, 'wind': {'speed': 6.69, 'deg': 210}, 'rain': {'1h': 0.11}, 'clouds': {'all': 40}, 'dt': 1695109947, 'sys': {'type': 2, 'id': 2075535, 'country': 'GB', 'sunrise': 1695102067, 'sunset': 1695146876}, 'timezone': 3600, 'id': 2643743, 'name': 'London', 'cod': 200}, {'coord': {'lon': 13.4105, 'lat': 52.5244}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01d'}], 'base': 'stations', 'main': {'temp': 17.96, 'feels_like': 17.64, 'temp_min': 17.21, 'temp_max': 19.45, 'pressure': 1006, 'humidity': 70}, 'visibility': 10000, 'wind': {'speed': 5.66, 'deg': 250}, 'clouds': {'all': 0}, 'dt': 1695109801, 'sys': {'type': 2, 'id': 2011538, 'country': 'DE', 'sunrise': 1695098789, 'sunset': 1695143658}, 'timezone': 7200, 'id': 2950159, 'name': 'Berlin', 'cod': 200}]
+[2023-09-19T07:58:39.345+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/weather_dag.py", line 40, in download_data
+    save_data(data, extraction_timestamp)
+  File "/opt/airflow/dags/weather_dag.py", line 57, in save_data
+    with open("../files/weather.json", "a") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '../files/weather.json'
+[2023-09-19T07:58:39.355+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=weather_data, task_id=extract_data, execution_date=20230919T075838, start_date=20230919T075838, end_date=20230919T075839
+[2023-09-19T07:58:39.365+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 63 for task extract_data ([Errno 2] No such file or directory: '../files/weather.json'; 5375)
+[2023-09-19T07:58:39.383+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-19T07:58:39.396+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

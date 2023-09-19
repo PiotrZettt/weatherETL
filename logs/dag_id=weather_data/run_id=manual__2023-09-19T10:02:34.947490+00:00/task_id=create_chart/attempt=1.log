@@ -1,0 +1,65 @@
+[2023-09-19T10:02:38.147+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_data.create_chart manual__2023-09-19T10:02:34.947490+00:00 [queued]>
+[2023-09-19T10:02:38.151+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_data.create_chart manual__2023-09-19T10:02:34.947490+00:00 [queued]>
+[2023-09-19T10:02:38.152+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-19T10:02:38.157+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonVirtualenvOperator): create_chart> on 2023-09-19 10:02:34.947490+00:00
+[2023-09-19T10:02:38.162+0000] {standard_task_runner.py:57} INFO - Started process 1132 to run task
+[2023-09-19T10:02:38.165+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'weather_data', 'create_chart', 'manual__2023-09-19T10:02:34.947490+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpkwb8gaf5']
+[2023-09-19T10:02:38.166+0000] {standard_task_runner.py:85} INFO - Job 78: Subtask create_chart
+[2023-09-19T10:02:38.198+0000] {task_command.py:415} INFO - Running <TaskInstance: weather_data.create_chart manual__2023-09-19T10:02:34.947490+00:00 [running]> on host 12ae14f8feaf
+[2023-09-19T10:02:38.238+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_data' AIRFLOW_CTX_TASK_ID='create_chart' AIRFLOW_CTX_EXECUTION_DATE='2023-09-19T10:02:34.947490+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-19T10:02:34.947490+00:00'
+[2023-09-19T10:02:38.241+0000] {process_utils.py:182} INFO - Executing cmd: /usr/local/bin/python -m virtualenv /tmp/venvu6mld1iz --system-site-packages
+[2023-09-19T10:02:38.247+0000] {process_utils.py:186} INFO - Output:
+[2023-09-19T10:02:38.860+0000] {process_utils.py:190} INFO - created virtual environment CPython3.8.18.final.0-64 in 159ms
+[2023-09-19T10:02:38.860+0000] {process_utils.py:190} INFO -   creator CPython3Posix(dest=/tmp/venvu6mld1iz, clear=False, no_vcs_ignore=False, global=True)
+[2023-09-19T10:02:38.860+0000] {process_utils.py:190} INFO -   seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/***/.local/share/virtualenv)
+[2023-09-19T10:02:38.861+0000] {process_utils.py:190} INFO -     added seed packages: pip==23.2, setuptools==68.0.0, wheel==0.40.0
+[2023-09-19T10:02:38.861+0000] {process_utils.py:190} INFO -   activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+[2023-09-19T10:02:38.882+0000] {process_utils.py:182} INFO - Executing cmd: /tmp/venvu6mld1iz/bin/pip install -r /tmp/venvu6mld1iz/requirements.txt
+[2023-09-19T10:02:38.889+0000] {process_utils.py:186} INFO - Output:
+[2023-09-19T10:02:39.856+0000] {process_utils.py:190} INFO - Requirement already satisfied: pandas in /home/***/.local/lib/python3.8/site-packages (from -r /tmp/venvu6mld1iz/requirements.txt (line 1)) (2.0.3)
+[2023-09-19T10:02:40.128+0000] {process_utils.py:190} INFO - Collecting matplotlib (from -r /tmp/venvu6mld1iz/requirements.txt (line 2))
+[2023-09-19T10:02:40.128+0000] {process_utils.py:190} INFO -   Obtaining dependency information for matplotlib from https://files.pythonhosted.org/packages/84/76/9267af394cb88ce5245b5a9d328ee90ccd5710a1d08b0ec363c3a86cd992/matplotlib-3.7.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-19T10:02:40.129+0000] {process_utils.py:190} INFO -   Using cached matplotlib-3.7.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (5.7 kB)
+[2023-09-19T10:02:40.175+0000] {process_utils.py:190} INFO - Requirement already satisfied: python-dateutil>=2.8.2 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvu6mld1iz/requirements.txt (line 1)) (2.8.2)
+[2023-09-19T10:02:40.175+0000] {process_utils.py:190} INFO - Requirement already satisfied: pytz>=2020.1 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvu6mld1iz/requirements.txt (line 1)) (2023.3)
+[2023-09-19T10:02:40.175+0000] {process_utils.py:190} INFO - Requirement already satisfied: tzdata>=2022.1 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvu6mld1iz/requirements.txt (line 1)) (2023.3)
+[2023-09-19T10:02:40.176+0000] {process_utils.py:190} INFO - Requirement already satisfied: numpy>=1.20.3 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvu6mld1iz/requirements.txt (line 1)) (1.24.4)
+[2023-09-19T10:02:40.287+0000] {process_utils.py:190} INFO - Collecting contourpy>=1.0.1 (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2))
+[2023-09-19T10:02:40.288+0000] {process_utils.py:190} INFO -   Obtaining dependency information for contourpy>=1.0.1 from https://files.pythonhosted.org/packages/9b/cb/08f884c4c2efd433a38876b1b8069bfecef3f2d21ff0ce635d455962f70f/contourpy-1.1.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-19T10:02:40.289+0000] {process_utils.py:190} INFO -   Using cached contourpy-1.1.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (5.9 kB)
+[2023-09-19T10:02:40.341+0000] {process_utils.py:190} INFO - Collecting cycler>=0.10 (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2))
+[2023-09-19T10:02:40.342+0000] {process_utils.py:190} INFO -   Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+[2023-09-19T10:02:40.463+0000] {process_utils.py:190} INFO - Collecting fonttools>=4.22.0 (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2))
+[2023-09-19T10:02:40.464+0000] {process_utils.py:190} INFO -   Obtaining dependency information for fonttools>=4.22.0 from https://files.pythonhosted.org/packages/61/3f/68c99c2b5fb29f42ba22027d035ae08f0b2ea0178fbf00e7cef730b1a809/fonttools-4.42.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-19T10:02:40.465+0000] {process_utils.py:190} INFO -   Using cached fonttools-4.42.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (150 kB)
+[2023-09-19T10:02:40.558+0000] {process_utils.py:190} INFO - Collecting kiwisolver>=1.0.1 (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2))
+[2023-09-19T10:02:40.558+0000] {process_utils.py:190} INFO -   Obtaining dependency information for kiwisolver>=1.0.1 from https://files.pythonhosted.org/packages/10/15/0c225864a00eb3dbd3d04b6465f331dc12a6e80673449166457b9566036d/kiwisolver-1.4.5-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-19T10:02:40.559+0000] {process_utils.py:190} INFO -   Using cached kiwisolver-1.4.5-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (6.4 kB)
+[2023-09-19T10:02:40.560+0000] {process_utils.py:190} INFO - Requirement already satisfied: packaging>=20.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2)) (23.1)
+[2023-09-19T10:02:40.786+0000] {process_utils.py:190} INFO - Collecting pillow>=6.2.0 (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2))
+[2023-09-19T10:02:40.786+0000] {process_utils.py:190} INFO -   Obtaining dependency information for pillow>=6.2.0 from https://files.pythonhosted.org/packages/2e/17/f19ad27effaf9b1ce6fe88d9f238d430293c486e33fdac71f037153cfd37/Pillow-10.0.1-cp38-cp38-manylinux_2_28_aarch64.whl.metadata
+[2023-09-19T10:02:40.787+0000] {process_utils.py:190} INFO -   Using cached Pillow-10.0.1-cp38-cp38-manylinux_2_28_aarch64.whl.metadata (9.5 kB)
+[2023-09-19T10:02:40.788+0000] {process_utils.py:190} INFO - Requirement already satisfied: pyparsing>=2.3.1 in /home/***/.local/lib/python3.8/site-packages (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2)) (3.1.1)
+[2023-09-19T10:02:40.789+0000] {process_utils.py:190} INFO - Requirement already satisfied: importlib-resources>=3.2.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2)) (6.0.1)
+[2023-09-19T10:02:40.827+0000] {process_utils.py:190} INFO - Requirement already satisfied: zipp>=3.1.0 in /home/***/.local/lib/python3.8/site-packages (from importlib-resources>=3.2.0->matplotlib->-r /tmp/venvu6mld1iz/requirements.txt (line 2)) (3.16.2)
+[2023-09-19T10:02:40.840+0000] {process_utils.py:190} INFO - Requirement already satisfied: six>=1.5 in /home/***/.local/lib/python3.8/site-packages (from python-dateutil>=2.8.2->pandas->-r /tmp/venvu6mld1iz/requirements.txt (line 1)) (1.16.0)
+[2023-09-19T10:02:40.893+0000] {process_utils.py:190} INFO - Using cached matplotlib-3.7.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (11.4 MB)
+[2023-09-19T10:02:40.908+0000] {process_utils.py:190} INFO - Using cached contourpy-1.1.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (285 kB)
+[2023-09-19T10:02:40.921+0000] {process_utils.py:190} INFO - Using cached fonttools-4.42.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (4.5 MB)
+[2023-09-19T10:02:40.929+0000] {process_utils.py:190} INFO - Using cached kiwisolver-1.4.5-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (1.4 MB)
+[2023-09-19T10:02:40.934+0000] {process_utils.py:190} INFO - Using cached Pillow-10.0.1-cp38-cp38-manylinux_2_28_aarch64.whl (3.5 MB)
+[2023-09-19T10:02:43.411+0000] {process_utils.py:190} INFO - Installing collected packages: pillow, kiwisolver, fonttools, cycler, contourpy, matplotlib
+[2023-09-19T10:02:45.048+0000] {process_utils.py:190} INFO - Successfully installed contourpy-1.1.1 cycler-0.11.0 fonttools-4.42.1 kiwisolver-1.4.5 matplotlib-3.7.3 pillow-10.0.1
+[2023-09-19T10:02:45.253+0000] {process_utils.py:190} INFO - 
+[2023-09-19T10:02:45.254+0000] {process_utils.py:190} INFO - [notice] A new release of pip is available: 23.2 -> 23.2.1
+[2023-09-19T10:02:45.254+0000] {process_utils.py:190} INFO - [notice] To update, run: python -m pip install --upgrade pip
+[2023-09-19T10:02:45.392+0000] {process_utils.py:182} INFO - Executing cmd: /tmp/venvu6mld1iz/bin/python /tmp/venvu6mld1iz/script.py /tmp/venvu6mld1iz/script.in /tmp/venvu6mld1iz/script.out /tmp/venvu6mld1iz/string_args.txt /tmp/venvu6mld1iz/termination.log
+[2023-09-19T10:02:45.399+0000] {process_utils.py:186} INFO - Output:
+[2023-09-19T10:02:46.539+0000] {process_utils.py:190} INFO - [[34m2023-09-19T10:02:46.539+0000[0m] {[34mcategory.py:[0m223} INFO[0m - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.[0m
+[2023-09-19T10:02:46.541+0000] {process_utils.py:190} INFO - [[34m2023-09-19T10:02:46.540+0000[0m] {[34mcategory.py:[0m223} INFO[0m - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.[0m
+[2023-09-19T10:02:46.542+0000] {process_utils.py:190} INFO - [[34m2023-09-19T10:02:46.542+0000[0m] {[34mcategory.py:[0m223} INFO[0m - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.[0m
+[2023-09-19T10:02:46.543+0000] {process_utils.py:190} INFO - [[34m2023-09-19T10:02:46.543+0000[0m] {[34mcategory.py:[0m223} INFO[0m - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.[0m
+[2023-09-19T10:02:46.936+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-19T10:02:46.944+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=weather_data, task_id=create_chart, execution_date=20230919T100234, start_date=20230919T100238, end_date=20230919T100246
+[2023-09-19T10:02:46.984+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-19T10:02:46.993+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
