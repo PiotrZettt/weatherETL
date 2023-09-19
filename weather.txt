@@ -1,3 +1,0 @@
-The weather conditions for Warsaw,  the temperature is 10.53C, humidity: 37%, wind: 6.17m/s,  clear sky
-The weather conditions for London,  the temperature is 10.77C, humidity: 91%, wind: 2.57m/s,  light intensity drizzle
-The weather conditions for Berlin,  the temperature is 13.51C, humidity: 54%, wind: 3.09m/s,  clear sky
