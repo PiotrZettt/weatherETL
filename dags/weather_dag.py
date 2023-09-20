@@ -1,10 +1,10 @@
 from datetime import datetime
 from airflow import DAG
 
-from airflow.operators.python import PythonVirtualenvOperator
+from airflow.operators.python import PythonVirtualenvOperator, PythonOperator
 
-from dag_logic.chart import create_chart
-from dag_logic.data import download_data
+from chart import create_chart
+from data import download_data
 
 dag = DAG(
     dag_id="weather_data",
@@ -13,7 +13,7 @@ dag = DAG(
 
 )
 
-extract_data = PythonVirtualenvOperator(
+extract_data = PythonOperator(
     task_id="extract_data",
     python_callable=download_data,
     dag=dag,

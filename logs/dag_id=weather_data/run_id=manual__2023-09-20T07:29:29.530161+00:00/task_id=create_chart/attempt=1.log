@@ -1,0 +1,77 @@
+[2023-09-20T07:29:32.706+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_data.create_chart manual__2023-09-20T07:29:29.530161+00:00 [queued]>
+[2023-09-20T07:29:32.709+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_data.create_chart manual__2023-09-20T07:29:29.530161+00:00 [queued]>
+[2023-09-20T07:29:32.710+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-20T07:29:32.715+0000] {taskinstance.py:1380} INFO - Executing <Task(PythonVirtualenvOperator): create_chart> on 2023-09-20 07:29:29.530161+00:00
+[2023-09-20T07:29:32.719+0000] {standard_task_runner.py:57} INFO - Started process 3558 to run task
+[2023-09-20T07:29:32.722+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'weather_data', 'create_chart', 'manual__2023-09-20T07:29:29.530161+00:00', '--job-id', '93', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmp4awysc8b']
+[2023-09-20T07:29:32.723+0000] {standard_task_runner.py:85} INFO - Job 93: Subtask create_chart
+[2023-09-20T07:29:32.749+0000] {task_command.py:415} INFO - Running <TaskInstance: weather_data.create_chart manual__2023-09-20T07:29:29.530161+00:00 [running]> on host 90bb52186339
+[2023-09-20T07:29:32.785+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_data' AIRFLOW_CTX_TASK_ID='create_chart' AIRFLOW_CTX_EXECUTION_DATE='2023-09-20T07:29:29.530161+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-20T07:29:29.530161+00:00'
+[2023-09-20T07:29:32.787+0000] {process_utils.py:182} INFO - Executing cmd: /usr/local/bin/python -m virtualenv /tmp/venvj2uqrjh4 --system-site-packages
+[2023-09-20T07:29:32.794+0000] {process_utils.py:186} INFO - Output:
+[2023-09-20T07:29:33.443+0000] {process_utils.py:190} INFO - created virtual environment CPython3.8.18.final.0-64 in 250ms
+[2023-09-20T07:29:33.443+0000] {process_utils.py:190} INFO -   creator CPython3Posix(dest=/tmp/venvj2uqrjh4, clear=False, no_vcs_ignore=False, global=True)
+[2023-09-20T07:29:33.443+0000] {process_utils.py:190} INFO -   seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/home/***/.local/share/virtualenv)
+[2023-09-20T07:29:33.444+0000] {process_utils.py:190} INFO -     added seed packages: pip==23.2.1, setuptools==68.1.2, wheel==0.41.2
+[2023-09-20T07:29:33.444+0000] {process_utils.py:190} INFO -   activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+[2023-09-20T07:29:33.464+0000] {process_utils.py:182} INFO - Executing cmd: /tmp/venvj2uqrjh4/bin/pip install -r /tmp/venvj2uqrjh4/requirements.txt
+[2023-09-20T07:29:33.471+0000] {process_utils.py:186} INFO - Output:
+[2023-09-20T07:29:34.323+0000] {process_utils.py:190} INFO - Requirement already satisfied: pandas in /home/***/.local/lib/python3.8/site-packages (from -r /tmp/venvj2uqrjh4/requirements.txt (line 1)) (2.0.3)
+[2023-09-20T07:29:34.586+0000] {process_utils.py:190} INFO - Collecting matplotlib (from -r /tmp/venvj2uqrjh4/requirements.txt (line 2))
+[2023-09-20T07:29:34.586+0000] {process_utils.py:190} INFO -   Obtaining dependency information for matplotlib from https://files.pythonhosted.org/packages/84/76/9267af394cb88ce5245b5a9d328ee90ccd5710a1d08b0ec363c3a86cd992/matplotlib-3.7.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-20T07:29:34.587+0000] {process_utils.py:190} INFO -   Using cached matplotlib-3.7.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (5.7 kB)
+[2023-09-20T07:29:34.625+0000] {process_utils.py:190} INFO - Requirement already satisfied: python-dateutil>=2.8.2 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvj2uqrjh4/requirements.txt (line 1)) (2.8.2)
+[2023-09-20T07:29:34.625+0000] {process_utils.py:190} INFO - Requirement already satisfied: pytz>=2020.1 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvj2uqrjh4/requirements.txt (line 1)) (2023.3)
+[2023-09-20T07:29:34.625+0000] {process_utils.py:190} INFO - Requirement already satisfied: tzdata>=2022.1 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvj2uqrjh4/requirements.txt (line 1)) (2023.3)
+[2023-09-20T07:29:34.626+0000] {process_utils.py:190} INFO - Requirement already satisfied: numpy>=1.20.3 in /home/***/.local/lib/python3.8/site-packages (from pandas->-r /tmp/venvj2uqrjh4/requirements.txt (line 1)) (1.24.4)
+[2023-09-20T07:29:34.721+0000] {process_utils.py:190} INFO - Collecting contourpy>=1.0.1 (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2))
+[2023-09-20T07:29:34.721+0000] {process_utils.py:190} INFO -   Obtaining dependency information for contourpy>=1.0.1 from https://files.pythonhosted.org/packages/9b/cb/08f884c4c2efd433a38876b1b8069bfecef3f2d21ff0ce635d455962f70f/contourpy-1.1.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-20T07:29:34.722+0000] {process_utils.py:190} INFO -   Using cached contourpy-1.1.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (5.9 kB)
+[2023-09-20T07:29:34.774+0000] {process_utils.py:190} INFO - Collecting cycler>=0.10 (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2))
+[2023-09-20T07:29:34.776+0000] {process_utils.py:190} INFO -   Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+[2023-09-20T07:29:34.873+0000] {process_utils.py:190} INFO - Collecting fonttools>=4.22.0 (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2))
+[2023-09-20T07:29:34.874+0000] {process_utils.py:190} INFO -   Obtaining dependency information for fonttools>=4.22.0 from https://files.pythonhosted.org/packages/61/3f/68c99c2b5fb29f42ba22027d035ae08f0b2ea0178fbf00e7cef730b1a809/fonttools-4.42.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-20T07:29:34.875+0000] {process_utils.py:190} INFO -   Using cached fonttools-4.42.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (150 kB)
+[2023-09-20T07:29:34.963+0000] {process_utils.py:190} INFO - Collecting kiwisolver>=1.0.1 (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2))
+[2023-09-20T07:29:34.964+0000] {process_utils.py:190} INFO -   Obtaining dependency information for kiwisolver>=1.0.1 from https://files.pythonhosted.org/packages/10/15/0c225864a00eb3dbd3d04b6465f331dc12a6e80673449166457b9566036d/kiwisolver-1.4.5-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata
+[2023-09-20T07:29:34.964+0000] {process_utils.py:190} INFO -   Using cached kiwisolver-1.4.5-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (6.4 kB)
+[2023-09-20T07:29:34.965+0000] {process_utils.py:190} INFO - Requirement already satisfied: packaging>=20.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2)) (23.1)
+[2023-09-20T07:29:35.165+0000] {process_utils.py:190} INFO - Collecting pillow>=6.2.0 (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2))
+[2023-09-20T07:29:35.166+0000] {process_utils.py:190} INFO -   Obtaining dependency information for pillow>=6.2.0 from https://files.pythonhosted.org/packages/2e/17/f19ad27effaf9b1ce6fe88d9f238d430293c486e33fdac71f037153cfd37/Pillow-10.0.1-cp38-cp38-manylinux_2_28_aarch64.whl.metadata
+[2023-09-20T07:29:35.167+0000] {process_utils.py:190} INFO -   Using cached Pillow-10.0.1-cp38-cp38-manylinux_2_28_aarch64.whl.metadata (9.5 kB)
+[2023-09-20T07:29:35.167+0000] {process_utils.py:190} INFO - Requirement already satisfied: pyparsing>=2.3.1 in /home/***/.local/lib/python3.8/site-packages (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2)) (3.1.1)
+[2023-09-20T07:29:35.168+0000] {process_utils.py:190} INFO - Requirement already satisfied: importlib-resources>=3.2.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2)) (6.0.1)
+[2023-09-20T07:29:35.200+0000] {process_utils.py:190} INFO - Requirement already satisfied: zipp>=3.1.0 in /home/***/.local/lib/python3.8/site-packages (from importlib-resources>=3.2.0->matplotlib->-r /tmp/venvj2uqrjh4/requirements.txt (line 2)) (3.16.2)
+[2023-09-20T07:29:35.211+0000] {process_utils.py:190} INFO - Requirement already satisfied: six>=1.5 in /home/***/.local/lib/python3.8/site-packages (from python-dateutil>=2.8.2->pandas->-r /tmp/venvj2uqrjh4/requirements.txt (line 1)) (1.16.0)
+[2023-09-20T07:29:35.253+0000] {process_utils.py:190} INFO - Using cached matplotlib-3.7.3-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (11.4 MB)
+[2023-09-20T07:29:35.266+0000] {process_utils.py:190} INFO - Using cached contourpy-1.1.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (285 kB)
+[2023-09-20T07:29:35.275+0000] {process_utils.py:190} INFO - Using cached fonttools-4.42.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (4.5 MB)
+[2023-09-20T07:29:35.281+0000] {process_utils.py:190} INFO - Using cached kiwisolver-1.4.5-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (1.4 MB)
+[2023-09-20T07:29:35.286+0000] {process_utils.py:190} INFO - Using cached Pillow-10.0.1-cp38-cp38-manylinux_2_28_aarch64.whl (3.5 MB)
+[2023-09-20T07:29:37.337+0000] {process_utils.py:190} INFO - Installing collected packages: pillow, kiwisolver, fonttools, cycler, contourpy, matplotlib
+[2023-09-20T07:29:38.776+0000] {process_utils.py:190} INFO - Successfully installed contourpy-1.1.1 cycler-0.11.0 fonttools-4.42.1 kiwisolver-1.4.5 matplotlib-3.7.3 pillow-10.0.1
+[2023-09-20T07:29:39.104+0000] {process_utils.py:182} INFO - Executing cmd: /tmp/venvj2uqrjh4/bin/python /tmp/venvj2uqrjh4/script.py /tmp/venvj2uqrjh4/script.in /tmp/venvj2uqrjh4/script.out /tmp/venvj2uqrjh4/string_args.txt /tmp/venvj2uqrjh4/termination.log
+[2023-09-20T07:29:39.111+0000] {process_utils.py:186} INFO - Output:
+[2023-09-20T07:29:40.074+0000] {process_utils.py:190} INFO - Traceback (most recent call last):
+[2023-09-20T07:29:40.075+0000] {process_utils.py:190} INFO -   File "/tmp/venvj2uqrjh4/script.py", line 61, in <module>
+[2023-09-20T07:29:40.075+0000] {process_utils.py:190} INFO -     res = create_chart(*arg_dict["args"], **arg_dict["kwargs"])
+[2023-09-20T07:29:40.075+0000] {process_utils.py:190} INFO -   File "/tmp/venvj2uqrjh4/script.py", line 44, in create_chart
+[2023-09-20T07:29:40.075+0000] {process_utils.py:190} INFO -     date.set_major_locator(locator)
+[2023-09-20T07:29:40.076+0000] {process_utils.py:190} INFO - AttributeError: 'str' object has no attribute 'set_major_locator'
+[2023-09-20T07:29:40.241+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 395, in execute
+    return super().execute(context=serializable_context)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 602, in execute_callable
+    result = self._execute_python_callable_in_subprocess(python_path, tmp_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 463, in _execute_python_callable_in_subprocess
+    raise AirflowException(error_msg) from None
+airflow.exceptions.AirflowException: Process returned non-zero exit status 1.
+'str' object has no attribute 'set_major_locator'
+[2023-09-20T07:29:40.243+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=weather_data, task_id=create_chart, execution_date=20230920T072929, start_date=20230920T072932, end_date=20230920T072940
+[2023-09-20T07:29:40.250+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 93 for task create_chart (Process returned non-zero exit status 1.
+'str' object has no attribute 'set_major_locator'; 3558)
+[2023-09-20T07:29:40.265+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-20T07:29:40.273+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check
