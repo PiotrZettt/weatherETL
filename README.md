@@ -1,18 +1,12 @@
 # weatherETL
-An ETL pipe line to work with weather data.
-At the moment the app accepts an input of places, towns you want to check the weather for and saves the results to a text file.
+An ETL pipe line to work with weather data using Apache Airflow.
+The weather_dag.py employs PythonVirtualenvOperator to install required dependencies before executing the "chart" task.
 
 ## How to run
 Create a new folder and clone the repo.
-Create venv and install requirements.txt
 
-This app retrieves data from the openweathermap.org.
-To use it you need to sign in to https://api.openweathermap.org and obtain your uniqe api_key.
+The folder includes a docker-compose.yaml file you can use to build an Apache Airflow local instance:
 
-Once you have the key set it as an evnvironmental variable:
+```docker compose up```
 
-```export API_KEY=<your_api_key>```
 
-The app uses the argparse library and to run it you need to provide locations you want to check the weather for as arguments in the command line:
-
-```% python main.py --locations_list location1 location2 location3``` and so on.
