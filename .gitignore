@@ -1,2 +1,9 @@
 venv
+.github
+.idea
 .env
+api_key.txt
+weather.json
+weather.parquet
+logs
+plugins
