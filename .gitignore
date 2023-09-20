@@ -1,2 +1,6 @@
 venv
+.idea
 .env
+api_key.txt
+weather.json
+weather.parquet

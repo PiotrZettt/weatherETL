@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 contourpy==1.1.0
 cycler==0.11.0
 fonttools==4.42.1
@@ -12,3 +13,18 @@ python-dateutil==2.8.2
 pytz==2023.3.post1
 six==1.16.0
 tzdata==2023.3
+=======
+certifi==2022.12.7
+charset-normalizer==3.1.0
+idna==3.4
+numpy==1.24.2
+pandas==2.0.0
+pyarrow==11.0.0
+python-dateutil==2.8.2
+python-dotenv==1.0.0
+pytz==2023.3
+requests==2.28.2
+six==1.16.0
+tzdata==2023.3
+urllib3==1.26.15
+>>>>>>> e3c28d5c884d2b26fca5a30e2a837a71c87164e9
